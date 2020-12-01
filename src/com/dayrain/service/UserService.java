@@ -1,13 +1,10 @@
 package com.dayrain.service;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
-import com.dayrain.Dao.StudentDao;
 import com.dayrain.Dao.UserDao;
 import com.dayrain.entity.User;
-import com.dayrain.utils.DBUtils;
 
 public class UserService {
 	
@@ -24,4 +21,34 @@ public class UserService {
 		return userRes;
 	}
 	
+	
+	public List<User> getUserList() {
+		UserDao userDao = new UserDao();
+		return userDao.getUserList();
+	}
+	
+	
+	public void addUser(User user) {
+		user.setCreateTime(new Date());
+		user.setUpdateTime(new Date());
+		user.setUserType((byte)2);
+		user.setState((byte)1);	
+		user.setUsername(user.getStudentNo());
+		UserDao userDao = new UserDao();
+		User res = userDao.getUserByUserName(user.getUsername());
+		if(res != null) {
+			return;
+		}
+		userDao.addUser(user);
+	}
+	
+	public void deleteUser(int id) {
+		UserDao userDao = new UserDao();
+		userDao.deleteUser(id);
+	}
+	
+	public void changeStatus(Byte state, int userId) {
+		UserDao userDao = new UserDao();
+		userDao.changeStatus(state, userId);
+	}
 }

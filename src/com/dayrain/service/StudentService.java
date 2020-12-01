@@ -47,9 +47,23 @@ public class StudentService {
 		studentDao.deleteStudent(studentNo);
 	}
 	
+	/**
+	 * 更新学生
+	 * @param student
+	 */
 	public void updateStudent(Student student) {
 		StudentDao studentDao = new StudentDao();
 		studentDao.updateStudent(student);
+	}
+	
+	
+	/**
+	 * 获取未注册的学生
+	 * @return
+	 */
+	public List<Student> getStudentUnRegister() {
+		StudentDao studentDao = new StudentDao();
+		return studentDao.getStudentUnRegister();
 	}
 	
 	

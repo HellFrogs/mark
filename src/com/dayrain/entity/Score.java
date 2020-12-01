@@ -9,9 +9,21 @@ public class Score {
 	
 	private String studentNo;
 	
+	private float score;
+	
 	private Date createTime;
 	
 	private Date updateTime;
+	
+	
+
+	public float getScore() {
+		return score;
+	}
+
+	public void setScore(float score) {
+		this.score = score;
+	}
 
 	public Integer getId() {
 		return id;

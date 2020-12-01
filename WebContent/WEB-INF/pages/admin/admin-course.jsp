@@ -19,7 +19,7 @@
 					<span class="sr-only">学生管理系统</span> <span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/StudentManage/">学生管理系统</a>
+				<a class="navbar-brand" href="/StudentManage/mainUrl">学生管理系统</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<!-- 导航条菜单 -->
@@ -55,7 +55,7 @@
 					<div class="col-sm-5">
 						<!-- <button class="btn addBtn">添加学生</button> -->
 						<button type="button" class="btn btn-primary" data-toggle="modal"
-							data-target="#addStudent">添加课程</button>
+							data-target="#addCourse">添加课程</button>
 					</div>
 				</div>
 
@@ -84,10 +84,10 @@
 
 									<th>
 										<button class="btn btn-default"
-											data-student-no="${course.courseNo }" data-toggle="modal"
+											data-course-no="${course.courseNo }" data-toggle="modal"
 											data-target="#updateCourse">编辑</button>
 										<button class="btn btn-danger"
-											data-student-no="${course.courseNo }" data-toggle="modal"
+											data-course-no="${course.courseNo }" data-toggle="modal"
 											data-target="#deleteCourse">删除</button>
 									</th>
 								</tr>
@@ -110,12 +110,12 @@
 		</div>
 	</div>
 
-	<!-- add student -->
-	<div class="modal fade" id="addStudent" tabindex="-1" role="dialog"
+	<!-- add Course -->
+	<div class="modal fade" id="addCourse" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="#">
+				<form action="/StudentManage/admin/addCourse">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -126,17 +126,17 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="course-no" class="control-label">课程号:</label> <input
-								type="text" class="form-control" id="course-no">
+								type="text" class="form-control" name="courseNo" id="course-no">
 						</div>
 
 						<div class="form-group">
 							<label for="course-name" class="control-label">课程名:</label> <input
-								type="text" class="form-control" id="course-name">
+								type="text" class="form-control" name="courseName" id="course-name">
 						</div>
 
 						<div class="form-group">
 							<label for="course-teacher" class="control-label">授课老师:</label> <input
-								type="text" class="form-control" id="course-teacher">
+								type="text" class="form-control" name="teacherNo" id="course-teacher">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -148,12 +148,12 @@
 		</div>
 	</div>
 
-	<!-- update student -->
+	<!-- update Course -->
 	<div class="modal fade" id="updateCourse" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="http://www.baidu.com">
+				<form action="/StudentManage/admin/updateCourse">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -164,17 +164,17 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="update-course-no" class="control-label">课程号:</label>
-							<input type="text" class="form-control" id="update-course-no">
+							<input type="text" readonly class="form-control" name="courseNo" id="update-course-no">
 						</div>
 
 						<div class="form-group">
 							<label for="update-course-name" class="control-label">课程名:</label>
-							<input type="text" class="form-control" id="update-course-name">
+							<input type="text" class="form-control" name="courseName" id="update-course-name">
 						</div>
 
 						<div class="form-group">
 							<label for="update-course-teacher" class="control-label">授课老师:</label>
-							<input type="text" class="form-control"
+							<input type="text" class="form-control" name="teacherNo"
 								id="update-course-teacher">
 						</div>
 					</div>
@@ -192,7 +192,7 @@
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="http://www.baidu.com">
+				<form action="/StudentManage/admin/deleteCourse">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -203,13 +203,13 @@
 					<div class="modal-body">
 						确认要删除该课程的所有信息吗（该操作不可逆）？
 						<div class="form-group hidden">
-							<label for="delete-student-no" class="control-label">学号:</label>
-							<input type="text" class="form-control" id="delete-student-no">
+							<label for="delete-course-no" class="control-label">学号:</label>
+							<input type="text" class="form-control" name="courseNo" id="delete-course-no">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button submit" class="btn btn-danger">删除</button>
+						<button type="submit" class="btn btn-danger">删除</button>
 					</div>
 				</form>
 			</div>
@@ -223,15 +223,28 @@
 	<script>
 		$('#updateCourse').on('show.bs.modal', function(event) {
 			var button = $(event.relatedTarget)
-			var studentId = button.data('course-no')
+			var courseNo = button.data('course-no')
 			var modal = $(this)
-			modal.find('#update-student-no').val(studentId)
+			var params = {
+				"courseNo": courseNo
+			}
+			$.ajax({
+				url:'/StudentManage/getCourse',
+				type:"get",
+				data: params,
+				success:function(result) {
+					modal.find('#update-course-no').val(result.courseNo)
+					modal.find('#update-course-name').val(result.courseName)
+					modal.find('#update-course-teacher').val(result.teacherNo)
+				}
+			})
 		})
 
 		$('#deleteCourse').on('show.bs.modal', function(event) {
-			console.log("hello")
 			var button = $(event.relatedTarget)
-			var studentId = button.data('course-no')
+			var courseNo = button.data('course-no')
+			var modal = $(this)
+			modal.find('#delete-course-no').val(courseNo)
 		})
 	</script>
 </body>

@@ -1,11 +1,20 @@
 package com.dayrain.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dayrain.entity.Course;
+import com.dayrain.entity.Student;
+import com.dayrain.entity.dto.ScoreDto;
+import com.dayrain.service.CourseService;
+import com.dayrain.service.ScoreService;
+import com.dayrain.service.StudentService;
 
 /**
  * Servlet implementation class AdminScoreController
@@ -27,6 +36,17 @@ public class AdminScoreController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		ScoreService scoreService = new ScoreService();
+		List<ScoreDto> scores = scoreService.getScoreList();
+		StudentService studentService = new StudentService();
+		CourseService courseService = new CourseService();
+		
+		List<Course> courses = courseService.getCourseList();
+		List<Student>students = studentService.getStudentList();
+				
+		request.setAttribute("scores", scores);
+		request.setAttribute("courses", courses);
+		request.setAttribute("students", students);
 		request.getRequestDispatcher("/WEB-INF/pages/admin/admin-score.jsp").forward(request, response);
 	}
 

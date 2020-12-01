@@ -35,7 +35,7 @@ public class LoginController extends HttpServlet {
 		
 		UserService userService = new UserService();
 		User res = userService.loginCheck(username, password);
-		
+		request.getSession().setAttribute("loginUser", res);
 		if(res != null) {
 			//登录成功
 			request.getSession().setAttribute("loginUser", res);

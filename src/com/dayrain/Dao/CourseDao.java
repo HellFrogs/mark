@@ -93,7 +93,7 @@ public class CourseDao {
 		ResultSet resultSet = null;
 		try {
 			con = DBUtils.getConnection();
-			String sql = "insert into tb_course(courset_no, course_name, teacher_no, create_time, update_time) values(?,?,?,?,?,?)";
+			String sql = "insert into tb_course(course_no, course_name, teacher_no, student_num, create_time, update_time) values(?,?,?,?,?,?)";
 			pre = con.prepareStatement(sql);
 			pre.setString(1, course.getCourseNo());
 			pre.setString(2, course.getCourseName());

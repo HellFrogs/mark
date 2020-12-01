@@ -171,4 +171,46 @@ public class StudentDao {
 			DBUtils.closeConnection(con, pre, resultSet);
 		}
 	}
+	
+	public List<Student> getStudentUnRegister() {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet resultSet = null;
+		List<Student> res = new ArrayList<Student>();
+				
+		try {
+			con = DBUtils.getConnection();
+			String sql = "select st.* from tb_student st where st.student_no not in (select student_no from tb_user) order by create_time desc";
+			pre = con.prepareStatement(sql);
+			resultSet = pre.executeQuery();
+			while(resultSet.next()) {
+				String studentNo = resultSet.getString("student_no");
+				String studentName = resultSet.getString("student_name");
+				String description = resultSet.getString("description");
+				String idCard = resultSet.getString("id_card");
+				Integer age = resultSet.getInt("age");
+				Byte gender = resultSet.getByte("gender");
+				String year = resultSet.getString("year");
+				Date createTime = resultSet.getDate("create_time");
+				Date updateTime = resultSet.getDate("update_time");
+				Student student = new Student();
+				student.setStudentNo(studentNo);
+				student.setStudentName(studentName);
+				student.setDescription(description);
+				student.setIdCard(idCard);
+				student.setAge(age);
+				student.setGender(gender);
+				student.setYear(year);
+				student.setCreateTime(createTime);
+				student.setUpdateTime(updateTime);
+				res.add(student);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(con, pre, resultSet);
+		}
+		return res;
+	}
 }
