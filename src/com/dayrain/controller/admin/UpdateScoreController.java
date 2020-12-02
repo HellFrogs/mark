@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.entity.Score;
 import com.dayrain.service.ScoreService;
 
-
+/**
+ * 更新分数
+ */
 @WebServlet("/admin/updateScore")
 public class UpdateScoreController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

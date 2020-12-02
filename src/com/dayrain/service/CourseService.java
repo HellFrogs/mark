@@ -55,12 +55,20 @@ public class CourseService {
 		CourseDao courseDao = new CourseDao();
 		courseDao.updateCourse(course);
 	}
-
+	
+	/**
+	 * 统计课程数
+	 * @return
+	 */
 	public int count() {
 		CourseDao courseDao = new CourseDao();
 		return courseDao.count();
 	}
 
+	/**
+	 * 选课人数+1
+	 * @param courseNo
+	 */
 	public void plusStudentNum(String courseNo) {
 		CourseDao courseDao = new CourseDao();
 		courseDao.plusStudentNum(courseNo);

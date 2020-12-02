@@ -23,13 +23,20 @@ public class UserService {
 		return userRes;
 	}
 	
-	
+	/**
+	 * 获取用户列表
+	 * @return
+	 */
 	public List<User> getUserList() {
 		UserDao userDao = new UserDao();
 		return userDao.getUserList();
 	}
 	
 	
+	/**
+	 * 添加用户
+	 * @param user
+	 */
 	public void addUser(User user) {
 		StudentService studentService = new StudentService();
 		Student student = studentService.getStudentByNo(user.getStudentNo());
@@ -47,11 +54,19 @@ public class UserService {
 		userDao.addUser(user);
 	}
 	
+	/*
+	 *删除用户 
+	 */
 	public void deleteUser(int id) {
 		UserDao userDao = new UserDao();
 		userDao.deleteUser(id);
 	}
 	
+	/**
+	 * 改变状态
+	 * @param state 状态
+	 * @param userId 用户id
+	 */
 	public void changeStatus(Byte state, int userId) {
 		UserDao userDao = new UserDao();
 		userDao.changeStatus(state, userId);

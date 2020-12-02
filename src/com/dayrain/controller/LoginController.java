@@ -15,6 +15,9 @@ import com.dayrain.service.LoginHistoryService;
 import com.dayrain.service.UserService;
 import com.dayrain.utils.EncryptUtils;
 
+/**
+ * 登录提交
+ */
 @WebServlet("/loginUrl")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -16,8 +16,9 @@ import com.dayrain.entity.dto.StudentScoreDto;
 import com.dayrain.service.ScoreService;
 import com.dayrain.service.StudentService;
 
+
 /**
- * Servlet implementation class ScoreController
+ * 跳转到个人分数查询界面
  */
 @WebServlet("/scoreUrl")
 public class ScoreController extends HttpServlet {

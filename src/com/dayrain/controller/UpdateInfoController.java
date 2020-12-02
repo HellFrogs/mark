@@ -11,8 +11,11 @@ import com.dayrain.entity.User;
 import com.dayrain.service.StudentService;
 import com.dayrain.service.UserService;
 
+ 
 /**
- * Servlet implementation class UpdateInfoController
+ * 
+ * 跳转到更新信息界面
+ * 
  */
 @WebServlet("/updateInfo")
 public class UpdateInfoController extends HttpServlet {

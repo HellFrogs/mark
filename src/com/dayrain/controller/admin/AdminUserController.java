@@ -15,7 +15,7 @@ import com.dayrain.service.StudentService;
 import com.dayrain.service.UserService;
 
 /**
- * Servlet implementation class AdminUserController
+ * 跳转到用户管理
  */
 @WebServlet("/admin/adminUserUrl")
 public class AdminUserController extends HttpServlet {

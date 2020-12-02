@@ -12,7 +12,9 @@ import com.dayrain.entity.User;
 import com.dayrain.service.ScoreService;
 import com.dayrain.service.UserService;
 
-
+/*
+ *添加分数 
+ */
 @WebServlet("/admin/addScore")
 public class AddScoreController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

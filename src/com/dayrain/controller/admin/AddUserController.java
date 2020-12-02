@@ -13,7 +13,7 @@ import com.dayrain.service.UserService;
 import com.dayrain.utils.EncryptUtils;
 
 /**
- * Servlet implementation class AddUserController
+ * 添加用户
  */
 @WebServlet("/admin/addUser")
 public class AddUserController extends HttpServlet {

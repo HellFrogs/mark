@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.Dao.StudentDao;
 
 /**
- * Servlet implementation class DeleteStudentController
+ * 删除学生
  */
 @WebServlet("/admin/deleteStudent")
 public class DeleteStudentController extends HttpServlet {

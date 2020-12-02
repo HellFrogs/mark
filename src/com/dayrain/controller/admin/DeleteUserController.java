@@ -11,7 +11,7 @@ import com.dayrain.service.TeacherService;
 import com.dayrain.service.UserService;
 
 /**
- * Servlet implementation class DeleteUserController
+ * 删除用户
  */
 @WebServlet("/admin/deleteUser")
 public class DeleteUserController extends HttpServlet {

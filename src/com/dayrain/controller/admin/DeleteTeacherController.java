@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.service.TeacherService;
 
 /**
- * Servlet implementation class DeleteTeacherController
+ * 删除老师
  */
 @WebServlet("/admin/deleteTeacher")
 public class DeleteTeacherController extends HttpServlet {

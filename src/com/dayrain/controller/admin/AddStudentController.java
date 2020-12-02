@@ -13,7 +13,7 @@ import com.dayrain.entity.Student;
 import com.dayrain.service.StudentService;
 
 /**
- * Servlet implementation class AddStudentController
+ *添加学生
  */
 @WebServlet("/admin/addStudent")
 public class AddStudentController extends HttpServlet {

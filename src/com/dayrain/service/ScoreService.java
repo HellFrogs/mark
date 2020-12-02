@@ -13,26 +13,48 @@ import com.dayrain.entity.dto.StudentScoreDto;
 
 public class ScoreService {
 
+	/**
+	 * 获取成绩列表
+	 * @return
+	 */
 	public List<ScoreDto> getScoreList() {
 		ScoreDao scoreDao = new ScoreDao();
 		return scoreDao.getScoreList();
 	}
 	
+	/**
+	 * 更新成绩
+	 * @param score
+	 */
 	public void updateScore(Score score) {
 		ScoreDao scoreDao = new ScoreDao();
 		scoreDao.updateScore(score);
 	}
 	
+	/**
+	 * 删除成绩
+	 * @param id
+	 */
 	public void deleteScore(int id) {
 		ScoreDao scoreDao = new ScoreDao();
 	    scoreDao.deleteScore(id);
 	}
 	
+	/**
+	 * 获取成绩
+	 * @param studenNo 学号
+	 * @param courseNo 课程号
+	 * @return
+	 */
 	public Score getScoreByStudentNoAndCourseNo(String studenNo, String courseNo) {
 		ScoreDao scoreDao = new ScoreDao();
 		return scoreDao.getScoreByStudentNoAndCourseNo(studenNo, courseNo);
 	}
 
+	/**
+	 * 添加成绩
+	 * @param scoreObj
+	 */
 	public void addScore(Score scoreObj) {
 	
 		
@@ -50,11 +72,21 @@ public class ScoreService {
 		
 	}
 
+	/**
+	 * 获取排名前top的学霸
+	 * @param top
+	 * @return
+	 */
 	public List<ScoreDto> getTopScoreList(int top) {
 		ScoreDao scoreDao = new ScoreDao();
 		return scoreDao.getTopScoreList(top);
 	}
 
+	/**
+	 * 通过学号查成绩
+	 * @param studentNo 学号
+	 * @return
+	 */
 	public List<StudentScoreDto> getScoreListByStudentNo(String studentNo) {
 		ScoreDao scoreDao = new ScoreDao();
 		List<ScoreDto> scoreDtos = scoreDao.getScoreListByStudentNo(studentNo);

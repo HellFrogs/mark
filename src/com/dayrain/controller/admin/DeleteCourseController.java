@@ -11,8 +11,8 @@ import com.dayrain.Dao.CourseDao;
 import com.dayrain.Dao.StudentDao;
 import com.dayrain.entity.Course;
 
-/**
-
+/*
+ * 删除课程
  */
 @WebServlet("/admin/deleteCourse")
 public class DeleteCourseController extends HttpServlet {

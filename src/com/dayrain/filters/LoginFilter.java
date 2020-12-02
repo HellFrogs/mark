@@ -19,7 +19,7 @@ import com.dayrain.entity.User;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter(value = "/*", filterName = "A")
+@WebFilter(value = "/*")
 public class LoginFilter implements Filter {
 
 	private static List<String> passUrlList = Arrays.asList("login.jsp", "css"

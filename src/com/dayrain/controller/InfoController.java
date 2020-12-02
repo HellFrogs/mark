@@ -12,7 +12,7 @@ import com.dayrain.entity.User;
 import com.dayrain.service.StudentService;
 
 /**
- * Servlet implementation class InfoController
+ * 跳转到学生个人信息界面
  */
 @WebServlet("/infoUrl")
 public class InfoController extends HttpServlet {

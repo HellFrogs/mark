@@ -66,11 +66,20 @@ public class StudentService {
 		return studentDao.getStudentUnRegister();
 	}
 
+	/**
+	 * 统计
+	 * @return
+	 */
 	public int count() {
 		StudentDao studentDao = new StudentDao();
 		return studentDao.count();
 	}
 	
+	/**
+	 * 更新
+	 * @param studentNo
+	 * @param description
+	 */
 	public void updateStudent(String studentNo, String description) {
 		StudentDao studentDao = new StudentDao();
 		studentDao.updateStudent(studentNo, description);

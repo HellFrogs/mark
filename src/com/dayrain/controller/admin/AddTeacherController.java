@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.entity.Teacher;
 import com.dayrain.service.TeacherService;
 
-/**
+/*
+ * 添加教师
  */
 @WebServlet("/admin/addTeacher")
 public class AddTeacherController extends HttpServlet {

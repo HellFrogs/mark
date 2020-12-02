@@ -16,8 +16,9 @@ import com.dayrain.service.CourseService;
 import com.dayrain.service.ScoreService;
 import com.dayrain.service.StudentService;
 
+
 /**
- * Servlet implementation class MainController
+ * 跳转到主界面
  */
 @WebServlet("/mainUrl")
 public class MainController extends HttpServlet {

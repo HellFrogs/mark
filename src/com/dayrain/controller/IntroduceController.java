@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class IntroduceController
+ * 跳转到介绍界面
  */
 @WebServlet("/introduceUrl")
 public class IntroduceController extends HttpServlet {

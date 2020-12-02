@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.entity.Teacher;
 import com.dayrain.service.TeacherService;
 
-
+/**
+ * 
+ * 跳转到教师管理
+ *
+ */
 @WebServlet("/admin/adminTeacherUrl")
 public class AdminTeacherController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

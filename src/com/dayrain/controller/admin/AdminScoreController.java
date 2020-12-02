@@ -17,7 +17,7 @@ import com.dayrain.service.ScoreService;
 import com.dayrain.service.StudentService;
 
 /**
- * Servlet implementation class AdminScoreController
+ * 跳转到成绩上传界面
  */
 @WebServlet("/admin/adminScoreUrl")
 public class AdminScoreController extends HttpServlet {

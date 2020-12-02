@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.service.ScoreService;
 
 /**
- * Servlet implementation class DeleteScoreController
+ * 删除分数
  */
 @WebServlet("/admin/deleteScore")
 public class DeleteScoreController extends HttpServlet {

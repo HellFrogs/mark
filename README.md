@@ -1,4 +1,4 @@
-# StudentManage
+# 学生管理系统
 
 #### 涉及技术
 Servlet、JSP、BootStrap，Jquery（很少，可忽略）、druid数据库连接池（配置一下即可）
@@ -26,16 +26,55 @@ Servlet、JSP、BootStrap，Jquery（很少，可忽略）、druid数据库连�
 个人档案（学生视角）
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1202/170115_f9b11a52_7967932.png "个人档案.png")
 
-#### 功能说明
-系统角色分为管理员和学生，管理员拥有对学生、课程、分数、教师等基本信息的增删改查权限。学生只可以查看个人信息，以及课程得分情况。
-首页实现了一些数据的统计，如在线人数、系统运行时间。（用到了servlet中的监听器）
-简单地写了两个过滤器，完成基本的登录校验、权限认证。
-分页以及查询功能并未实现，分页的组件被隐藏起来了，如果有需要，可以自行编写相关代码。（个人觉得没必要，此项目仅仅用来熟悉servlet）
-
 #### 项目运行
+
+环境：
+
 tomcat9 + jdk1.8
+
 依赖的jar包在WEB-INF的lib文件夹下
-传统java web项目，非maven结构。
-根据不同的编辑器百度不同的导入方法（传统项目推荐eclipse，idea社区版不支持直接添加tomcat）
-建好数据库后，还需要在项目中配置连接参数，在src目录下的druid.properties中配置。
+
 数据库文件见sql文件夹
+
+导入：
+
+传统java web项目，非maven结构，传统项目推荐用eclipse。（import——>Existing Project into WorkSpace）
+
+#### 功能说明
+
+系统角色分为管理员和学生: 
+
+管理员拥有对学生、课程、分数、教师等基本信息的增删改查权限。学生只可以查看个人信息，以及课程得分情况。
+
+首页实现了一些数据的统计，如在线人数、系统运行时间。（用到了servlet中的监听器）
+
+两个过滤器，完成基本的登录校验、权限认证。
+
+分页以及查询功能并未实现，分页的组件被隐藏起来了，如果有需要，可以自行编写相关代码。
+
+（个人觉得没必要，此项目仅仅用来熟悉servlet）
+
+#### 代码解读
+
+核心部分的代码讲解放在了个人博客中：
+
+CSDN    https://blog.csdn.net/qq_37855749/article/details/110492060
+
+博客园：https://www.cnblogs.com/phdeblog/p/14075413.html
+
+#### 作者
+
+小楼夜听雨
+
+邮箱/qq：1376034301@qq.com
+
+博客地址：
+
+https://www.cnblogs.com/phdeblog
+
+https://blog.csdn.net/qq_37855749
+
+欢迎关注
+
+
+

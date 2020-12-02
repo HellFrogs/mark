@@ -15,13 +15,15 @@ public class UserDao {
 
 	public User getUserByUserNameAndPassword(String username, String password) {
 		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet resultSet = null;
 		try {
 			con = DBUtils.getConnection();
 			String sql = "select * from tb_user where username = ? and password = ?";
-			PreparedStatement pre = con.prepareStatement(sql);
+			pre = con.prepareStatement(sql);
 			pre.setString(1, username);
 			pre.setString(2, password);
-			ResultSet resultSet = pre.executeQuery();
+			resultSet = pre.executeQuery();
 			while (resultSet.next()) {
 				Integer userId = resultSet.getInt("user_id");
 
@@ -48,7 +50,7 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			DBUtils.closeConnection(con, null, null);
+			DBUtils.closeConnection(con, pre, resultSet);
 		}
 		return null;
 	}
@@ -60,12 +62,13 @@ public class UserDao {
 	public List<User> getUserList() {
 		Connection con = null;
 		PreparedStatement pre = null;
+		ResultSet resultSet = null;
 		List<User>res = new ArrayList<User>();
 		try {
 			con = DBUtils.getConnection();
 			String sql = "select * from tb_user where username != 'admin'";
 			pre = con.prepareStatement(sql);
-			ResultSet resultSet = pre.executeQuery();
+			resultSet = pre.executeQuery();
 			while (resultSet.next()) {
 				Integer userId = resultSet.getInt("user_id");
 				Byte userType = resultSet.getByte("user_type");
@@ -90,7 +93,7 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			DBUtils.closeConnection(con, null, null);
+			DBUtils.closeConnection(con, pre, resultSet);
 		}
 		return res;
 	}
@@ -172,12 +175,14 @@ public class UserDao {
 	
 	public User getUserByUserName(String username) {
 		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet resultSet = null;
 		try {
 			con = DBUtils.getConnection();
 			String sql = "select * from tb_user where username = ?";
-			PreparedStatement pre = con.prepareStatement(sql);
+			pre = con.prepareStatement(sql);
 			pre.setString(1, username);
-			ResultSet resultSet = pre.executeQuery();
+			resultSet = pre.executeQuery();
 			while (resultSet.next()) {
 				Integer userId = resultSet.getInt("user_id");
 
@@ -201,7 +206,7 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			DBUtils.closeConnection(con, null, null);
+			DBUtils.closeConnection(con, pre, resultSet);
 		}
 		return null;
 	}

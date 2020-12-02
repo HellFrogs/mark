@@ -13,7 +13,7 @@ import com.dayrain.entity.Course;
 import com.dayrain.service.CourseService;
 
 /**
- * Servlet implementation class UpdateCourseController
+ *更新课程
  */
 @WebServlet("/admin/updateCourse")
 public class UpdateCourseController extends HttpServlet {
