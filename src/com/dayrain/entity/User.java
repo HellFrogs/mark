@@ -13,11 +13,23 @@ public class User {
 	
 	private String studentNo;
 	
+	private String displayName;
+	
 	private Byte state;
 	
 	private Date createTime;
 	
 	private Date updateTime;
+	
+	
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
 
 	public Integer getUserId() {
 		return userId;

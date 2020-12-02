@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dayrain.entity.Course;
 import com.dayrain.entity.Student;
+import com.dayrain.entity.Teacher;
 import com.dayrain.service.CourseService;
 import com.dayrain.service.StudentService;
+import com.dayrain.service.TeacherService;
 
 /**
  * Servlet implementation class AdminCourseController
@@ -35,9 +37,12 @@ public class AdminCourseController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CourseService courseService = new CourseService();
+		TeacherService teacherService = new TeacherService();
 		
 		List<Course> courses = courseService.getCourseList();
+		List<Teacher> teachers = teacherService.getTeacherList();
 		request.setAttribute("courseList", courses);
+		request.setAttribute("teachers", teachers);
 		request.getRequestDispatcher("/WEB-INF/pages/admin/admin-course.jsp").forward(request, response);
 	}
 

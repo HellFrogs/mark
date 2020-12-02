@@ -29,6 +29,8 @@ public class UserDao {
 				Byte state = resultSet.getByte("state");
 				Date createTime = resultSet.getDate("create_time");
 				Date updateTime = resultSet.getDate("update_time");
+				String displayName = resultSet.getString("display_name");
+				String studentNo = resultSet.getString("student_no");
 				User user = new User();
 
 				user.setUserId(userId);
@@ -36,8 +38,10 @@ public class UserDao {
 				user.setPassword(password);
 				user.setUsername(username);
 				user.setState(state);
+				user.setDisplayName(displayName);
 				user.setCreateTime(createTime);
 				user.setUpdateTime(updateTime);
+				user.setStudentNo(studentNo);
 				return user;
 			}
 		} catch (SQLException e) {
@@ -70,6 +74,7 @@ public class UserDao {
 				Date updateTime = resultSet.getDate("update_time");
 				String password = resultSet.getString("password");
 				String username = resultSet.getString("username");
+				String displayName = resultSet.getString("display_name");
 				User user = new User();
 				user.setUserId(userId);
 				user.setUserType(userType);
@@ -78,6 +83,7 @@ public class UserDao {
 				user.setState(state);
 				user.setCreateTime(createTime);
 				user.setUpdateTime(updateTime);
+				user.setDisplayName(displayName);
 				res.add(user);
 			}
 		} catch (SQLException e) {
@@ -100,8 +106,8 @@ public class UserDao {
 
 		try {
 			con = DBUtils.getConnection();
-			String sql = "insert into tb_user(user_type, username, password, student_no, state, create_time, update_time)"
-					+ "values(?, ?, ?, ?, ?, ? , ?)";
+			String sql = "insert into tb_user(user_type, username, password, student_no, state, create_time, update_time, display_name) "
+					+ "values(?, ?, ?, ?, ?, ? , ?, ?)";
 			pre = con.prepareStatement(sql);
 		    pre.setInt(1, user.getUserType());
 		    pre.setString(2, user.getUsername());
@@ -110,6 +116,7 @@ public class UserDao {
 		    pre.setByte(5, user.getState());
 		    pre.setDate(6, new java.sql.Date(user.getCreateTime().getTime()));
 		    pre.setDate(7, new java.sql.Date(user.getUpdateTime().getTime()));
+		    pre.setString(8, user.getDisplayName());
 
 		    pre.execute();
 		} catch (SQLException e) {
@@ -198,5 +205,7 @@ public class UserDao {
 		}
 		return null;
 	}
+
+	
 
 }

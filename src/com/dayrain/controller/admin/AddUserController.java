@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dayrain.entity.User;
 import com.dayrain.service.StudentService;
 import com.dayrain.service.UserService;
+import com.dayrain.utils.EncryptUtils;
 
 /**
  * Servlet implementation class AddUserController
@@ -35,7 +36,7 @@ public class AddUserController extends HttpServlet {
 		String password = request.getParameter("password");
 		User user = new User();
 		user.setStudentNo(studentNo);
-		user.setPassword(password);
+		user.setPassword(EncryptUtils.MD5Encode(password));
 		UserService userService = new UserService();
 		userService.addUser(user);
 		request.getRequestDispatcher("/admin/adminUserUrl").forward(request, response);

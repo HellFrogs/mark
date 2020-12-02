@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,14 +35,14 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 
-				 <!-- 侧边栏 -->
+				<!-- 侧边栏 -->
 				<jsp:include page="/WEB-INF/pages/side_nav_template.jsp">
 					<jsp:param value="active" name="2" />
 				</jsp:include>
 
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">欢迎您，小楼夜听雨！</h1>
+				<h1 class="page-header">${student.getDescription()}</h1>
 
 				<div class="table-responsive">
 					<table class="table table-striped">
@@ -55,14 +57,16 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>高数</td>
-								<td>60</td>
-								<td>刘老师</td>
-								<td>30</td>
-								<td>32</td>
-							</tr>
+							<c:forEach var="score" items="${scores }" varStatus="status">
+								<tr>
+									<td>${status.index + 1 }</td>
+									<td>${score.courseName }</td>
+									<td>${score.courseNo }</td>
+									<td>${score.teacherName }</td>
+									<td>${score.rank }</td>
+									<td>${score.studentNum }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

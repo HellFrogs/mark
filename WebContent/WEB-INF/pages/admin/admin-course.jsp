@@ -131,17 +131,23 @@
 
 						<div class="form-group">
 							<label for="course-name" class="control-label">课程名:</label> <input
-								type="text" class="form-control" name="courseName" id="course-name">
+								type="text" class="form-control" name="courseName"
+								id="course-name">
 						</div>
 
 						<div class="form-group">
-							<label for="course-teacher" class="control-label">授课老师:</label> <input
-								type="text" class="form-control" name="teacherNo" id="course-teacher">
+							<label for="course-teacher" class="control-label">授课老师:</label> <select
+								class="form-control" name="teacherNo"
+								id="course-teacher">
+								<c:forEach var="teacher" items="${teachers }" varStatus="status">
+									<option value="${teacher.teacherNo }">${teacher.teacherName }</option>
+								</c:forEach>
+								</select>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button submit" class="btn btn-primary">提交</button>
+						<button type="submit" class="btn btn-primary">提交</button>
 					</div>
 				</form>
 			</div>
@@ -164,23 +170,29 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="update-course-no" class="control-label">课程号:</label>
-							<input type="text" readonly class="form-control" name="courseNo" id="update-course-no">
+							<input type="text" readonly class="form-control" name="courseNo"
+								id="update-course-no">
 						</div>
 
 						<div class="form-group">
 							<label for="update-course-name" class="control-label">课程名:</label>
-							<input type="text" class="form-control" name="courseName" id="update-course-name">
+							<input type="text" class="form-control" name="courseName"
+								id="update-course-name">
 						</div>
 
 						<div class="form-group">
 							<label for="update-course-teacher" class="control-label">授课老师:</label>
-							<input type="text" class="form-control" name="teacherNo"
+							<select class="form-control" name="teacherNo"
 								id="update-course-teacher">
+								<c:forEach var="teacher" items="${teachers }" varStatus="status">
+									<option value="${teacher.teacherNo }">${teacher.teacherName }</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button submit" class="btn btn-primary">保存</button>
+						<button type="submit" class="btn btn-primary">保存</button>
 					</div>
 				</form>
 			</div>
@@ -203,8 +215,9 @@
 					<div class="modal-body">
 						确认要删除该课程的所有信息吗（该操作不可逆）？
 						<div class="form-group hidden">
-							<label for="delete-course-no" class="control-label">学号:</label>
-							<input type="text" class="form-control" name="courseNo" id="delete-course-no">
+							<label for="delete-course-no" class="control-label">学号:</label> <input
+								type="text" class="form-control" name="courseNo"
+								id="delete-course-no">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -226,13 +239,13 @@
 			var courseNo = button.data('course-no')
 			var modal = $(this)
 			var params = {
-				"courseNo": courseNo
+				"courseNo" : courseNo
 			}
 			$.ajax({
-				url:'/StudentManage/getCourse',
-				type:"get",
-				data: params,
-				success:function(result) {
+				url : '/StudentManage/getCourse',
+				type : "get",
+				data : params,
+				success : function(result) {
 					modal.find('#update-course-no').val(result.courseNo)
 					modal.find('#update-course-name').val(result.courseName)
 					modal.find('#update-course-teacher').val(result.teacherNo)

@@ -43,8 +43,10 @@
 					<div class="jumbotron">
 
 						<p>
-							如果代码有问题或者您有不明白的地方，可以联系我。<br /> 作者：小楼夜听雨<br /> 博客地址：<a
-								href="https://www.cnblogs.com/phdeblog/">https://www.cnblogs.com/phdeblog/</a><br />
+							作者：小楼夜听雨<br /> 
+							博客地址 <br/>
+							CSDN：<a href="https://blog.csdn.net/qq_37855749">https://blog.csdn.net/qq_37855749</a><br />
+							博客园：<a href="https://www.cnblogs.com/phdeblog/">https://www.cnblogs.com/phdeblog/</a><br />
 							邮箱/qq: 1376034301@qq.com
 						</p>
 					</div>

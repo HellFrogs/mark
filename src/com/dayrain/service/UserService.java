@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.dayrain.Dao.UserDao;
+import com.dayrain.entity.Student;
 import com.dayrain.entity.User;
+import com.dayrain.utils.EncryptUtils;
 
 public class UserService {
 	
@@ -16,7 +18,7 @@ public class UserService {
 	public User loginCheck(String username, String password) {
 		UserDao userDao = new UserDao();
 		
-		User userRes = userDao.getUserByUserNameAndPassword(username, password);
+		User userRes = userDao.getUserByUserNameAndPassword(username, EncryptUtils.MD5Encode(password));
 		
 		return userRes;
 	}
@@ -29,6 +31,9 @@ public class UserService {
 	
 	
 	public void addUser(User user) {
+		StudentService studentService = new StudentService();
+		Student student = studentService.getStudentByNo(user.getStudentNo());
+		user.setDisplayName(student.getStudentName());
 		user.setCreateTime(new Date());
 		user.setUpdateTime(new Date());
 		user.setUserType((byte)2);

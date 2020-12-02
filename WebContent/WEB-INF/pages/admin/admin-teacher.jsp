@@ -79,7 +79,7 @@
 									<th>${teacher.teacherNo }</th>
 									<th>${teacher.teacherName }</th>
 									<th><c:choose>
-											<c:when test="${student.gender == 1}">
+											<c:when test="${teacher.gender == 1}">
 	                                                                                               男
 	                                        </c:when>
 

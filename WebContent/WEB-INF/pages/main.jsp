@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,13 +41,13 @@
 				</jsp:include>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">欢迎您，小楼夜听雨！</h1>
+				<h1 class="page-header">欢迎您, ${loginUser.getDisplayName() }！</h1>
 
 				<div class="row placeholders">
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<div class="imgBox">
-							<img src="<%=basePath%>/img/nav.jpg">
-							<h1 class="imgText">18</h1>
+							<img src="<%=basePath%>/img/nav1.jpg">
+							<h1 class="imgText">${studentNum}</h1>
 						</div>
 						<h4>学生总数</h4>
 						<span class="text-muted">Student</span>
@@ -53,8 +55,8 @@
 
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<div class="imgBox">
-							<img src="<%=basePath%>/img/nav.jpg">
-							<h1 class="imgText">18</h1>
+							<img src="<%=basePath%>/img/nav2.jpg">
+							<h1 class="imgText">${courseNum }</h1>
 						</div>
 						<h4>课程总数</h4>
 						<span class="text-muted">Class</span>
@@ -62,8 +64,8 @@
 
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<div class="imgBox">
-							<img src="<%=basePath%>/img/nav.jpg">
-							<h1 class="imgText">18</h1>
+							<img src="<%=basePath%>/img/nav3.jpg">
+							<h1 class="imgText">${onlineNums }</h1>
 						</div>
 						<h4>在线人数</h4>
 						<span class="text-muted">Teacher</span>
@@ -71,8 +73,8 @@
 
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<div class="imgBox">
-							<img src="<%=basePath%>/img/nav.jpg">
-							<h1 class="imgText">18</h1>
+							<img src="<%=basePath%>/img/nav4.jpg">
+							<h1 class="imgText">${days}</h1>
 						</div>
 						<h4>运行天数</h4>
 						<span class="text-muted">Days</span>
@@ -93,32 +95,15 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="score" items="${scores }" varStatus="status">
 							<tr>
-								<td>1</td>
-								<td>123456</td>
-								<td>学生1</td>
-								<td>软件工程</td>
-								<td>100</td>
+							    <td>${status.index + 1 }</td>
+							    <td>${score.studentNo }</td>
+							    <td>${score.studentName }</td>
+							    <td>${score.courseName }</td>
+							    <td>${score.score }</td>
 							</tr>
-
-
-							<tr>
-								<td>2</td>
-								<td>123457</td>
-								<td>学生2</td>
-								<td>软件工程</td>
-								<td>99</td>
-							</tr>
-
-							<tr>
-								<td>3</td>
-								<td>123458</td>
-								<td>学生2</td>
-								<td>软件工程</td>
-								<td>98</td>
-							</tr>
-
-
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

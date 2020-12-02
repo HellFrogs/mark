@@ -32,7 +32,7 @@ public class UpdateScoreController extends HttpServlet {
 		ScoreService scoreService = new ScoreService();
 		Score obj = new Score();
 		obj.setId(Integer.valueOf(id));
-		obj.setScore(Integer.valueOf(score));
+		obj.setScore(Float.valueOf(score));
 		scoreService.updateScore(obj);
 		request.getRequestDispatcher("/admin/adminScoreUrl").forward(request, response);
 	}

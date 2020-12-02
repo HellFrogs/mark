@@ -172,4 +172,38 @@ public class TeacherDao {
 			DBUtils.closeConnection(con, pre, resultSet);
 		}
 	}
+
+
+	public Teacher getTeacherByCourseNo(String course) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = DBUtils.getConnection();
+			String sql = "select te.* from tb_teacher te, tb_course co where te.teacher_no = co.teacher_no and co.course_no = ?";
+			pre = con.prepareStatement(sql);
+			pre.setNString(1, course);
+			resultSet = pre.executeQuery();
+			while (resultSet.next()) {
+				String teacherName = resultSet.getString("teacher_name");
+				Byte gender = resultSet.getByte("gender");
+				Date createTime = resultSet.getDate("create_time");
+				Date updateTime = resultSet.getDate("update_time");
+				String teacherNo = resultSet.getString("teacher_no");
+				Teacher teacher = new Teacher();
+				teacher.setTeacherNo(teacherNo);
+				teacher.setTeacherName(teacherName);
+				teacher.setGender(gender);
+				teacher.setCreateTime(createTime);
+				teacher.setUpdateTime(updateTime);
+				return teacher;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(con, pre, resultSet);
+		}
+		return null;
+	}
 }

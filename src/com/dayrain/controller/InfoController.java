@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dayrain.entity.Student;
+import com.dayrain.entity.User;
+import com.dayrain.service.StudentService;
+
 /**
  * Servlet implementation class InfoController
  */
@@ -26,7 +30,11 @@ public class InfoController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		StudentService studentService = new StudentService();
+		User user = (User) request.getSession().getAttribute("loginUser");
+		Student student = studentService.getStudentByNo(user.getStudentNo());
+	
+		request.setAttribute("student", student);
 		request.getRequestDispatcher("/WEB-INF/pages/info.jsp").forward(request, response);
 	}
 

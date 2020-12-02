@@ -213,4 +213,45 @@ public class StudentDao {
 		}
 		return res;
 	}
+
+	public int count() {
+		Connection con = null;
+		PreparedStatement pre = null;		
+		ResultSet resultSet = null;
+		try {
+			con = DBUtils.getConnection();
+			String sql = "select count(*) from tb_student";
+			pre = con.prepareStatement(sql);
+			resultSet = pre.executeQuery();
+			while(resultSet.next()) {
+				int num = resultSet.getInt(1);
+				return num;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(con, pre, resultSet);
+		}
+		return 0;
+	}
+	
+	public void updateStudent(String studentNo, String description) {
+		Connection con = null;
+		PreparedStatement pre = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBUtils.getConnection();
+			String sql = "update tb_student set description = ? where student_no = ?";
+			pre = con.prepareStatement(sql);
+		    pre.setString(1, description);
+		    pre.setString(2, studentNo);
+		    
+		    pre.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtils.closeConnection(con, pre, resultSet);
+		}
+	}
 }

@@ -76,7 +76,7 @@
 								<tr>
 									<th>${status.index }</th>
 									<th>${user.username }</th>
-									<th>${user.password }</th>
+									<th>**********</th>
 									<th>${user.state }</th>
 									<th>
 										<button class="btn btn-default" data-user-id="${user.userId }"

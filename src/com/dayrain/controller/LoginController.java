@@ -1,18 +1,20 @@
 package com.dayrain.controller;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dayrain.entity.LoginHistory;
 import com.dayrain.entity.User;
+import com.dayrain.service.LoginHistoryService;
 import com.dayrain.service.UserService;
+import com.dayrain.utils.EncryptUtils;
 
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet("/loginUrl")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,12 +36,19 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		UserService userService = new UserService();
+		LoginHistoryService loginHistoryService = new LoginHistoryService();
 		User res = userService.loginCheck(username, password);
-		request.getSession().setAttribute("loginUser", res);
 		if(res != null) {
 			//登录成功
+			//添加记录
+			LoginHistory loginHistory = new LoginHistory();
+			loginHistory.setUserId(res.getUserId());
+			loginHistory.setIp(request.getRemoteAddr());
+			loginHistory.setCreateTime(new Date());
+			loginHistoryService.addLoginHistory(loginHistory);
+			//跳转
 			request.getSession().setAttribute("loginUser", res);
-			request.getRequestDispatcher("/WEB-INF/pages/main.jsp").forward(request, response);
+			request.getRequestDispatcher("/mainUrl").forward(request, response);
 		}else {
 			//登录失败
 			request.setAttribute("msg", "登录失败，请检查用户名和密码是否正确！");

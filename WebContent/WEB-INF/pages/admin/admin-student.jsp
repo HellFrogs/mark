@@ -174,7 +174,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button submit" class="btn btn-primary">提交</button>
+						<button type="submit" class="btn btn-primary">提交</button>
 					</div>
 				</form>
 			</div>
@@ -235,7 +235,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button submit" class="btn btn-primary">提交</button>
+						<button type="submit" class="btn btn-primary">提交</button>
 					</div>
 				</form>
 			</div>

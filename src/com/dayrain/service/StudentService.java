@@ -65,6 +65,16 @@ public class StudentService {
 		StudentDao studentDao = new StudentDao();
 		return studentDao.getStudentUnRegister();
 	}
+
+	public int count() {
+		StudentDao studentDao = new StudentDao();
+		return studentDao.count();
+	}
+	
+	public void updateStudent(String studentNo, String description) {
+		StudentDao studentDao = new StudentDao();
+		studentDao.updateStudent(studentNo, description);
+	}
 	
 	
 }

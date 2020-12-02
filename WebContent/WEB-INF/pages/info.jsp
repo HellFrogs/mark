@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,42 +42,61 @@
 
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">欢迎您，小楼夜听雨！</h1>
+				<h1 class="page-header">${student.getDescription() }</h1>
+				<form action="/StudentManage/updateInfo	">
+					<div>
+						<div class="panel panel-default">
+							<!-- Default panel contents -->
+							<div class="panel-heading">个性签名</div>
+							<div class="panel-body">
+								<textarea class="form-control" name="description" rows="3">${student.getDescription()}</textarea>
+							</div>
+	
+							<!-- List group -->
+							<ul class="list-group">
+
+								<li class="list-group-item"><span
+									class="label label-primary">学&#12288号</span>
+									${student.getStudentNo() }</li>
+
+								<li class="list-group-item"><span
+									class="label label-primary">姓&#12288名</span>
+									${student.getStudentName() }</li>
+
+								<li class="list-group-item"><span
+									class="label label-primary">身份证</span> ${student.getIdCard() }</li>
+
+								<li class="list-group-item"><span
+									class="label label-primary">性别</span>
+									
+								
+									<c:choose>
+										<c:when test="${student.getGender() == 1}">
+		                                                                                               男
+		                                        </c:when>
+	
+										<c:otherwise>
+		                                                                                               女
+		                                </c:otherwise>
+									</c:choose>	
+									</li>
 
 
-				<div>
-					<div class="panel panel-default">
-						<!-- Default panel contents -->
-						<div class="panel-heading">个性签名</div>
-						<div class="panel-body">
-							<textarea class="form-control" rows="3"></textarea>
+								<li class="list-group-item"><span
+									class="label label-primary">年&#12288龄</span> ${student.age }</li>
+
+								<li class="list-group-item"><span
+									class="label label-primary">入学年份</span> ${student.year }</li>
+
+							</ul>
 						</div>
 
-						<!-- List group -->
-						<ul class="list-group">
-
-							<li class="list-group-item"><span
-								class="label label-primary">学&#12288号</span> 16135463210</li>
-
-							<li class="list-group-item"><span
-								class="label label-primary">姓&#12288名</span> 小明</li>
-
-							<li class="list-group-item"><span
-								class="label label-primary">身份证</span> 1234569874563217896</li>
-
-							<li class="list-group-item"><span
-								class="label label-primary">电&#12288话</span> 151896348964</li>
-
-
-							<li class="list-group-item"><span
-								class="label label-primary">邮&#12288箱</span> 1376034301@qq.com</li>
-
-							<li class="list-group-item"><span
-								class="label label-primary">地&#12288址</span> 江苏南京</li>
-
-						</ul>
+						<div>
+							<button class="bth btn-primary" style="float: right;"
+								type="submit">更新</button>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

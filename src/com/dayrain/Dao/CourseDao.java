@@ -153,4 +153,44 @@ public class CourseDao {
 			DBUtils.closeConnection(con, pre, resultSet);
 		}
 	}
+
+	public int count() {
+		Connection con = null;
+		PreparedStatement pre = null;		
+		ResultSet resultSet = null;
+		try {
+			con = DBUtils.getConnection();
+			String sql = "select count(*) from tb_course";
+			pre = con.prepareStatement(sql);
+			resultSet = pre.executeQuery();
+			while(resultSet.next()) {
+				int num = resultSet.getInt(1);
+				return num;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(con, pre, resultSet);
+		}
+		return 0;
+	}
+
+	public void plusStudentNum(String courseNo) {
+		Connection con = null;
+		PreparedStatement pre = null;		
+		ResultSet resultSet = null;
+		try {
+			con = DBUtils.getConnection();
+			String sql = "update tb_course set student_num = student_num + 1 where course_no = ?";
+			pre = con.prepareStatement(sql);
+			pre.setString(1, courseNo);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBUtils.closeConnection(con, pre, resultSet);
+		}
+	}
 }

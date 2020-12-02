@@ -54,4 +54,9 @@ public class TeacherService {
 		TeacherDao teacherDao = new TeacherDao();
 		teacherDao.updateTeacher(teacher);
 	}
+	
+	public Teacher getTeacherByCourseNo(String course) {
+		TeacherDao teacherDao = new TeacherDao();
+		return teacherDao.getTeacherByCourseNo(course);
+	}
 }
