@@ -40,6 +40,11 @@ tomcat9 + jdk1.8
 
 传统java web项目，非maven结构，传统项目推荐用eclipse。（import——>Existing Project into WorkSpace）
 
+初始账号密码：
+
+管理员账号密码： admin    123
+学生账号密码：   0000     123
+
 #### 功能说明
 
 系统角色分为管理员和学生: 
@@ -60,7 +65,7 @@ tomcat9 + jdk1.8
 
 CSDN    https://blog.csdn.net/qq_37855749/article/details/110492060
 
-博客园：https://www.cnblogs.com/phdeblog/p/14075413.html
+博客园：   https://www.cnblogs.com/phdeblog/p/14075413.html
 
 #### 作者
 
