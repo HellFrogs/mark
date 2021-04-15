@@ -65,23 +65,15 @@ tomcat9 + jdk1.8
 
 CSDN    https://blog.csdn.net/qq_37855749/article/details/110492060
 
-博客园：   https://www.cnblogs.com/phdeblog/p/14075413.html
-
 #### 作者
 
 小楼夜听雨
 
-邮箱/qq：1376034301@qq.com
+邮箱/qq：826679708@qq.com
 
-提供java/php系统代做服务，毕设、课程设计、小作业等，完全定制，保证全世界唯一。
-
-支持技术栈自选，SpringBoot、Vue、React、SpringCloud。。。。。。
-
-价格实惠，售后周到，远程部署、代码1对1讲解，包您满意，有意者可以联系上述qq/邮箱。
+提供付费咨询、系统定制服务，价格实惠
 
 博客地址：
-
-https://www.cnblogs.com/phdeblog
 
 https://blog.csdn.net/qq_37855749
 
