@@ -18,7 +18,7 @@
 					<span class="sr-only">DayRain学生管理系统</span> <span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/StudentManage/mainUrl">学生管理系统</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/mainUrl">学生管理系统</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<!-- 导航条菜单 -->
@@ -47,7 +47,7 @@
 							博客地址 <br/>
 							CSDN：<a href="https://blog.csdn.net/qq_37855749">https://blog.csdn.net/qq_37855749</a><br />
 							博客园：<a href="https://www.cnblogs.com/phdeblog/">https://www.cnblogs.com/phdeblog/</a><br />
-							邮箱/qq: 1376034301@qq.com
+							邮箱/qq: 826679708@qq.com
 						</p>
 					</div>
 				</div>

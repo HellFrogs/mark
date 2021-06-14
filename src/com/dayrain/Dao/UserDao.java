@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.dayrain.entity.User;
 import com.dayrain.utils.DBUtils;
+import com.dayrain.utils.ParamsUtils;
 
 public class UserDao {
 
@@ -59,7 +60,7 @@ public class UserDao {
 	 * 查询所有的用户
 	 * @return
 	 */
-	public List<User> getUserList() {
+	public List<User> getUserList(String query) {
 		Connection con = null;
 		PreparedStatement pre = null;
 		ResultSet resultSet = null;
@@ -67,6 +68,10 @@ public class UserDao {
 		try {
 			con = DBUtils.getConnection();
 			String sql = "select * from tb_user where username != 'admin'";
+			if(query != null && !"".equals(query.trim())) {
+				query = ParamsUtils.wrapper(query);
+				sql += " where username like " + query + " or display_name like " + query;
+			}
 			pre = con.prepareStatement(sql);
 			resultSet = pre.executeQuery();
 			while (resultSet.next()) {

@@ -33,11 +33,13 @@ public class AdminUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String query = request.getParameter("query");
 		StudentService studentService = new StudentService();
 		List<Student> students = studentService.getStudentUnRegister();
 		
 		UserService userService = new UserService();
-		List<User>users = userService.getUserList();
+		List<User>users = userService.getUserList(query);
 		request.setAttribute("users", users);
 		request.setAttribute("students", students);
 	

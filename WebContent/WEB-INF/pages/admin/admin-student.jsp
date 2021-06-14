@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
 					<span class="sr-only">学生管理系统</span> <span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/StudentManage/mainUrl">学生管理系统</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/mainUrl">学生管理系统</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<!-- 导航条菜单 -->
@@ -44,13 +44,15 @@
 				<div class="row">
 
 					<div class="col-sm-7">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for..."> <span
-								class="input-group-btn">
-								<button class="btn btn-primary" type="button">搜索</button>
+						<form action="${pageContext.request.contextPath}/admin/adminStudentUrl" method="get">
+							<div class="input-group">
+								<input type="text" name="query" class="form-control"
+									   placeholder="Search for..."> <span
+									class="input-group-btn">
+								<button class="btn btn-primary" type="submit">搜索</button>
 							</span>
-						</div>
+							</div>
+						</form>
 					</div>
 
 					<div class="col-sm-5">
@@ -124,7 +126,7 @@
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="/StudentManage/admin/addStudent">
+				<form action="${pageContext.request.contextPath}/admin/addStudent">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -186,7 +188,7 @@
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="/StudentManage/admin/updateStudent">
+				<form action="${pageContext.request.contextPath}/admin/updateStudent">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -247,7 +249,7 @@
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="/StudentManage/admin/deleteStudent">
+				<form action="${pageContext.request.contextPath}/admin/deleteStudent">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -284,7 +286,7 @@
 				"studentNo": studentNo
 			}
 			$.ajax({
-				url:'/StudentManage/getStudent',
+				url:'${pageContext.request.contextPath}/getStudent',
 				type:"get",
 				data: params,
 				success:function(result) {

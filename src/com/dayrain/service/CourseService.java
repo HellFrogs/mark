@@ -11,15 +11,15 @@ public class CourseService {
 	 * 获取课程列表
 	 * @return 所有的课程信息
 	 */
-	public List<Course> getCourseList() {
+	public List<Course> getCourseList(String query) {
 		CourseDao courseDao = new CourseDao();
-		List<Course> courses = courseDao.getCourseList();
+		List<Course> courses = courseDao.getCourseList(query);
 		return courses;
 	}
 	
 	/**
 	 * 通过学号获取课程
-	 * @param studentNo 课程
+	 * @param courseNo 课程
 	 * @return
 	 */
 	public Course getCourseByNo(String courseNo) {
@@ -30,7 +30,7 @@ public class CourseService {
 	
 	/**
 	 * 添加課程
-	 * @param 課程
+	 * @param course
 	 * @return
 	 */
 	public Course addCourse(Course course) {

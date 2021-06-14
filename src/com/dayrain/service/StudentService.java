@@ -11,9 +11,9 @@ public class StudentService {
 	 * 获取学生列表
 	 * @return 所有的学生信息
 	 */
-	public List<Student> getStudentList() {
+	public List<Student> getStudentList(String query) {
 		StudentDao studentDao = new StudentDao();
-		List<Student> studentList = studentDao.getStudentList();
+		List<Student> studentList = studentDao.getStudentList(query);
 		return studentList;
 	}
 	

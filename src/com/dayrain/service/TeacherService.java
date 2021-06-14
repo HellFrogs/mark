@@ -10,15 +10,15 @@ public class TeacherService {
 	 * 获取教师列表
 	 * @return 所有的课程信息
 	 */
-	public List<Teacher> getTeacherList() {
+	public List<Teacher> getTeacherList(String query) {
 		TeacherDao teacherDao = new TeacherDao();
-		List<Teacher> teachers = teacherDao.getTeacherList();
+		List<Teacher> teachers = teacherDao.getTeacherList(query);
 		return teachers;
 	}
 	
 	/**
 	 * 通过工号获取教师
-	 * @param studentNo 课程
+	 * @param teacherNo 教师编号
 	 * @return
 	 */
 	public Teacher getTeacherByNo(String teacherNo) {
@@ -29,7 +29,7 @@ public class TeacherService {
 	
 	/**
 	 * 添加教师
-	 * @param 教师
+	 * @param teacher 教师
 	 * @return
 	 */
 	public Teacher addTeacher(Teacher teacher) {
@@ -48,7 +48,7 @@ public class TeacherService {
 	
 	/**
 	 * 更新教师
-	 * @param course
+	 * @param teacher 教师
 	 */
 	public void updateTeacher(Teacher teacher) {
 		TeacherDao teacherDao = new TeacherDao();

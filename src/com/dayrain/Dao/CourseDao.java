@@ -10,11 +10,12 @@ import java.util.List;
 
 import com.dayrain.entity.Course;
 import com.dayrain.utils.DBUtils;
+import com.dayrain.utils.ParamsUtils;
 
 public class CourseDao {
 
 	// 获取所有的课程
-	public List<Course> getCourseList() {
+	public List<Course> getCourseList(String query) {
 		Connection con = null;
 		PreparedStatement pre = null;
 		ResultSet resultSet = null;
@@ -22,7 +23,14 @@ public class CourseDao {
 
 		try {
 			con = DBUtils.getConnection();
-			String sql = "select * from tb_course order by create_time desc";
+			String sql = "select * from tb_course";
+
+			if(query != null && !"".equals(query.trim())) {
+				query = ParamsUtils.wrapper(query);
+				sql += " where course_no like " + query + " or course_name like " + query + " or teacher_no like " + query;
+			}
+
+			sql += " order by create_time desc";
 			pre = con.prepareStatement(sql);
 			resultSet = pre.executeQuery();
 			while (resultSet.next()) {

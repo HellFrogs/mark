@@ -34,8 +34,9 @@ public class AdminTeacherController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String query = request.getParameter("query");
 		TeacherService teacherService = new TeacherService();
-	    List<Teacher> teachers = teacherService.getTeacherList();
+	    List<Teacher> teachers = teacherService.getTeacherList(query);
 	    request.setAttribute("teachers", teachers);
 		request.getRequestDispatcher("/WEB-INF/pages/admin/admin-teacher.jsp").forward(request, response);
 	}

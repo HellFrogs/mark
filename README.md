@@ -30,7 +30,7 @@ Servlet、JSP、BootStrap，Jquery（很少，可忽略）、druid数据库连�
 
 环境：
 
-tomcat9 + jdk1.8
+tomcat9 + jdk1.8 + mysql5.7
 
 依赖的jar包在WEB-INF的lib文件夹下
 
@@ -38,9 +38,13 @@ tomcat9 + jdk1.8
 
 导入：
 
-传统java web项目，非maven结构，传统项目推荐用eclipse。（import——>Existing Project into WorkSpace）
+1、传统java web项目，非maven结构，推荐使用idea
 
-初始账号密码：
+2、修改src目录下的druid.properties文件，改成你自己的数据库参数
+
+3、数据库文件直接导入即可，不用手动改改，之所以数据库中密码很长，是因为加密过
+
+4、初始账号密码：
 
 管理员账号密码： admin    123
 学生账号密码：   0000     123
@@ -55,29 +59,23 @@ tomcat9 + jdk1.8
 
 两个过滤器，完成基本的登录校验、权限认证。
 
-分页以及查询功能并未实现，分页的组件被隐藏起来了，如果有需要，可以自行编写相关代码。
-
-（个人觉得没必要，此项目仅仅用来熟悉servlet）
-
 #### 代码解读
 
-核心部分的代码讲解放在了个人博客中：
+核心代码的讲解放在了个人博客中：
 
 CSDN    https://blog.csdn.net/qq_37855749/article/details/110492060
 
 #### 作者
 
-小楼夜听雨
+@小楼夜听雨 版权所有，仅供个人学习使用，禁止用于一切商业行为。
 
 邮箱/qq：826679708@qq.com
-
-提供付费咨询、系统定制服务，价格实惠
 
 博客地址：
 
 https://blog.csdn.net/qq_37855749
 
-欢迎关注
+如果帮助到你，欢迎点赞与关注我的博客。
 
 
 

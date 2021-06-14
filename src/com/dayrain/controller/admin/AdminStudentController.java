@@ -1,6 +1,7 @@
 package com.dayrain.controller.admin;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -32,8 +33,10 @@ public class AdminStudentController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		String query = request.getParameter("query");
 		StudentService studentService = new StudentService();
-		List<Student> studentList = studentService.getStudentList();
+		List<Student> studentList = studentService.getStudentList(query);
 		request.setAttribute("studentList", studentList);
 		request.getRequestDispatcher("/WEB-INF/pages/admin/admin-student.jsp").forward(request, response);
 	}

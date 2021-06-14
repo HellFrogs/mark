@@ -38,9 +38,9 @@ public class AdminCourseController extends HttpServlet {
 		// TODO Auto-generated method stub
 		CourseService courseService = new CourseService();
 		TeacherService teacherService = new TeacherService();
-		
-		List<Course> courses = courseService.getCourseList();
-		List<Teacher> teachers = teacherService.getTeacherList();
+		String query = request.getParameter("query");
+		List<Course> courses = courseService.getCourseList(query);
+		List<Teacher> teachers = teacherService.getTeacherList(null);
 		request.setAttribute("courseList", courses);
 		request.setAttribute("teachers", teachers);
 		request.getRequestDispatcher("/WEB-INF/pages/admin/admin-course.jsp").forward(request, response);

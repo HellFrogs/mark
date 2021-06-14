@@ -17,7 +17,7 @@
 					<span class="sr-only">学生管理系统</span> <span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/StudentManage/mainUrl">学生管理系统</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/mainUrl">学生管理系统</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<!-- 导航条菜单 -->

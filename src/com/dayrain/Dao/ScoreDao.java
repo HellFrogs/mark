@@ -13,11 +13,12 @@ import com.dayrain.entity.Score;
 import com.dayrain.entity.Student;
 import com.dayrain.entity.dto.ScoreDto;
 import com.dayrain.utils.DBUtils;
+import com.dayrain.utils.ParamsUtils;
 
 public class ScoreDao {
 
 	//查分
-	public List<ScoreDto> getScoreList() {
+	public List<ScoreDto> getScoreList(String query) {
 		Connection con = null;
 		PreparedStatement pre = null;
 		ResultSet resultSet = null;
@@ -27,7 +28,12 @@ public class ScoreDao {
 			con = DBUtils.getConnection();
 			String sql = "select sc.id as id, sc.score as score, st.student_no as student_no, st.student_name as student_name"
 					+ ", co.course_no as course_no, co.course_name as course_name from tb_score sc, tb_student st, tb_course co"
-					+ " where sc.course_no = co.course_no and sc.student_no = st.student_no order by sc.create_time desc";
+					+ " where (sc.course_no = co.course_no and sc.student_no = st.student_no) ";
+			if(query != null && !"".equals(query.trim())) {
+				query = ParamsUtils.wrapper(query);
+				sql += " and ( sc.student_no like " + query + " or  co.course_no like " + query +" or co.course_name like " + query + " or st.student_name like " + query + ")";
+			}
+			sql += " order by sc.create_time desc";
 			pre = con.prepareStatement(sql);
 			resultSet = pre.executeQuery();
 			while (resultSet.next()) {

@@ -12,7 +12,8 @@ public class UserService {
 	
 	/**
 	 * 登录校验
-	 * @param user 用户
+	 * @param username 用户
+	 * @param password 密码
 	 * @return 是否登录成功
 	 */
 	public User loginCheck(String username, String password) {
@@ -27,9 +28,9 @@ public class UserService {
 	 * 获取用户列表
 	 * @return
 	 */
-	public List<User> getUserList() {
+	public List<User> getUserList(String query) {
 		UserDao userDao = new UserDao();
-		return userDao.getUserList();
+		return userDao.getUserList(query);
 	}
 	
 	

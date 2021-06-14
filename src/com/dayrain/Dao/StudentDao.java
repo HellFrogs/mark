@@ -10,19 +10,25 @@ import java.util.List;
 
 import com.dayrain.entity.Student;
 import com.dayrain.utils.DBUtils;
+import com.dayrain.utils.ParamsUtils;
 
 public class StudentDao {
 	
 	//获取所有的学生
-	public List<Student> getStudentList() {
+	public List<Student> getStudentList(String query) {
 		Connection con = null;
 		PreparedStatement pre = null;
 		ResultSet resultSet = null;
 		List<Student> res = new ArrayList<Student>();
-				
+
 		try {
 			con = DBUtils.getConnection();
-			String sql = "select * from tb_student order by create_time desc";
+			String sql = "select * from tb_student ";
+			if(query != null && !"".equals(query.trim())) {
+				query = ParamsUtils.wrapper(query);
+				sql += "where student_no like " + query + " or student_name like " + query + " or description like " + query;
+			}
+			sql += " order by create_time desc";
 			pre = con.prepareStatement(sql);
 			resultSet = pre.executeQuery();
 			while(resultSet.next()) {

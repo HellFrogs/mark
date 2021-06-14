@@ -19,7 +19,7 @@
 					<span class="sr-only">学生管理系统</span> <span class="icon-bar"></span>
 					<span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/StudentManage/mainUrl">学生管理系统</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/mainUrl">学生管理系统</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<!-- 导航条菜单 -->
@@ -42,13 +42,15 @@
 				<div class="row">
 
 					<div class="col-sm-7">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Search for..."> <span
-								class="input-group-btn">
-								<button class="btn btn-primary" type="button">搜索</button>
+						<form action="${pageContext.request.contextPath}/admin/adminUserUrl">
+							<div class="input-group">
+								<input name="query" type="text" class="form-control"
+									   placeholder="Search for..."> <span
+									class="input-group-btn">
+								<button class="btn btn-primary" type="submit">搜索</button>
 							</span>
-						</div>
+							</div>
+						</form>
 					</div>
 
 					<div class="col-sm-5">
@@ -111,7 +113,7 @@
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="/StudentManage/admin/addUser">
+				<form action="${pageContext.request.contextPath}/admin/addUser">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -154,7 +156,7 @@
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form action="/StudentManage/admin/deleteUser">
+				<form action="${pageContext.request.contextPath}/admin/deleteUser">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">

@@ -11,6 +11,7 @@ import java.util.List;
 import com.dayrain.entity.Student;
 import com.dayrain.entity.Teacher;
 import com.dayrain.utils.DBUtils;
+import com.dayrain.utils.ParamsUtils;
 
 public class TeacherDao {
 	/**
@@ -18,7 +19,7 @@ public class TeacherDao {
 	 * 
 	 * @return
 	 */
-	public List<Teacher> getTeacherList() {
+	public List<Teacher> getTeacherList(String query) {
 		Connection con = null;
 		PreparedStatement pre = null;
 		ResultSet resultSet = null;
@@ -26,7 +27,12 @@ public class TeacherDao {
 
 		try {
 			con = DBUtils.getConnection();
-			String sql = "select * from tb_teacher order by create_time desc";
+			String sql = "select * from tb_teacher";
+			if(query != null && !"".equals(query.trim())) {
+				query = ParamsUtils.wrapper(query);
+				sql += " where teacher_no like " + query + " or teacher_name like " + query;
+			}
+			sql += " order by create_time desc";
 			pre = con.prepareStatement(sql);
 			resultSet = pre.executeQuery();
 			while (resultSet.next()) {

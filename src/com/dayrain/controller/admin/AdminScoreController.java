@@ -36,13 +36,13 @@ public class AdminScoreController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String query = request.getParameter("query");
 		ScoreService scoreService = new ScoreService();
-		List<ScoreDto> scores = scoreService.getScoreList();
+		List<ScoreDto> scores = scoreService.getScoreList(query);
 		StudentService studentService = new StudentService();
 		CourseService courseService = new CourseService();
-		
-		List<Course> courses = courseService.getCourseList();
-		List<Student>students = studentService.getStudentList();
+		List<Course> courses = courseService.getCourseList(null);
+		List<Student>students = studentService.getStudentList(null);
 				
 		request.setAttribute("scores", scores);
 		request.setAttribute("courses", courses);

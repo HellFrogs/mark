@@ -17,9 +17,9 @@ public class ScoreService {
 	 * 获取成绩列表
 	 * @return
 	 */
-	public List<ScoreDto> getScoreList() {
+	public List<ScoreDto> getScoreList(String query) {
 		ScoreDao scoreDao = new ScoreDao();
-		return scoreDao.getScoreList();
+		return scoreDao.getScoreList(query);
 	}
 	
 	/**
